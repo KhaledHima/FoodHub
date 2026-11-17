@@ -1,0 +1,19 @@
+﻿@model List<FoodHub.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "Restaurants";
+}
+<h1>Restaurants</h1>
+<ul>
+    @foreach (var restaurant in Model)
+    {
+        <li>
+            <h2>@restaurant.Name</h2>
+            <p>Cuisine: @restaurant.Cuisine</p>
+            <p>Rating: @restaurant.Rating</p>
+            <p>Delivery Fee: $@restaurant.DeliveryFee</p>
+            <p>Delivery Time: @restaurant.DeliveryMinutes minutes</p>
+            <p>Status: @(restaurant.IsOpen ? "Open" : "Closed")</p>
+        </li>
+    }
+</ul>
