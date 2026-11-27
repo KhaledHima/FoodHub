@@ -1,0 +1,73 @@
+@model FoodHub.Models.Restaurant
+@{
+    ViewData["Title"] = "New restaurant";
+    var categories = (IEnumerable<Category>)ViewBag.Categories;
+}
+
+<h1 class="mb-4">New restaurant</h1>
+
+<form asp-action="Create" method="post" class="col-md-6">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Slug" class="form-label"></label>
+        <input asp-for="Slug" class="form-control" />
+        <span asp-validation-for="Slug" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label"></label>
+        <select asp-for="CategoryId" class="form-select">
+            @foreach (var category in categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Phone" class="form-label"></label>
+        <input asp-for="Phone" class="form-control" placeholder="01012345678" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DeliveryFee" class="form-label"></label>
+        <input asp-for="DeliveryFee" type="text" class="form-control" />
+        <span asp-validation-for="DeliveryFee" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="MinOrder" class="form-label"></label>
+        <input asp-for="MinOrder" type="text" class="form-control" />
+        <span asp-validation-for="MinOrder" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DeliveryMinutes" class="form-label"></label>
+        <input asp-for="DeliveryMinutes" class="form-control" />
+        <span asp-validation-for="DeliveryMinutes" class="text-danger"></span>
+    </div>
+    <div class="form-check mb-3">
+        <input asp-for="IsOpen" class="form-check-input" />
+        <label asp-for="IsOpen" class="form-check-label"></label>
+    </div>
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-link">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,32 @@
+@model FoodHub.Models.Category
+@{
+    ViewData["Title"] = "Edit category";
+}
+
+<h1 class="mb-4">Edit category</h1>
+
+<form asp-action="Edit" method="post" class="col-md-6">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Slug" class="form-label"></label>
+        <input asp-for="Slug" class="form-control" />
+        <span asp-validation-for="Slug" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Icon" class="form-label"></label>
+        <input asp-for="Icon" class="form-control" />
+        <span asp-validation-for="Icon" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-link">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
